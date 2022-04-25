@@ -231,6 +231,3 @@ agregarPaginas (UnLibro unAutor unTitulo unasPaginas) paginasAAgregar = UnLibro 
 
 sacarSecuela :: Libro -> Libro
 sacarSecuela unLibro = unLibro { titulo = titulo unLibro ++ " 2", paginas = paginas unLibro + 50 }
-
--- Agrego el punto 7 del tp
---hhldfsakfsdafsdafsadfdsajfsakl
