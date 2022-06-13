@@ -96,7 +96,7 @@ esReincidente(Artista) :-
 
 % Una obra es un libro cuando NO es un comic.
 % not no es inversible!! No puede ligar las variables dentro de su predicado.
-% Si a esLibro no le agregamos el generador, no sería un predicado inversible porque el not es inversible.
+% Si a esLibro no le agregamos el generador, no sería un predicado inversible porque el not no es inversible.
 % El generador nos "achica" el universo de opciones.
 
 esLibro(Obra) :-
