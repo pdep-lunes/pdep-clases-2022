@@ -234,7 +234,7 @@ esCopado(novela(policial, CantidadDeCapitulos)) :-
 esCopado(novela(terror, _)).
 
 esCopado(libroDeCuentos(CantidadDeCuentos)) :-
-  CantidadCuentos > 10.
+  CantidadDeCuentos > 10.
 
 esCopado(libroCientifico(fisicaCuantica)).
 
