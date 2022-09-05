@@ -1,0 +1,63 @@
+import luchadores.*
+
+describe "Tests de mario" {
+
+	test "Mario al evolucionar el ataque cambia a bola de fuego" {
+
+		mario.evolucionar()
+		assert.equals("Bola de agua" , mario.ataque())
+
+	}
+	
+	test "Mario al recibir un ataque se agota" {
+		mario.recibirAtaque(200)
+		assert.equals(200 , mario.agotamiento())
+	}
+	
+	test "Mario al recibir un ataque y luego descansar su agotamiento es 0" {
+		mario.recibirAtaque(200)
+		mario.descansar()
+		assert.equals(0, mario.agotamiento())
+	}
+	
+	test "Mario es poderoso" {
+		assert.that(mario.tieneMuchoPoder())
+	}
+}
+
+describe "Test de Sora" {
+	
+	test "Sora empieza con nivel 1" {
+		assert.equals(1, sora.nivel())
+	}
+	
+	test "Cuando sora evoluciona a todos sus comandos se les agrega un +" {
+		const comandosEvolucionados = #{"Pyro+", "Hielo+", "Electro+"}
+		sora.evolucionar()
+		assert.equals(comandosEvolucionados , sora.comandos())
+	}
+	
+	test "Cuando sora evoluciona su nivel se incrementa en 1" {
+		const nivelAntesDeEvolucionar = sora.nivel()
+		sora.evolucionar()
+		assert.equals(nivelAntesDeEvolucionar + 1 , sora.nivel())
+	}
+}
+
+describe "Tests de link" {
+	
+	test "Link al evolucionar pierde espada de heroe y obtiene nuevo equipamiento" {
+		const equipamientoLuegoDeEvolucionar = #{"Espada Maestra" , "Gancho" , "Bombas" , "Escudo Hyliano", "Arco"}
+		link.evolucionar()
+		assert.equals(equipamientoLuegoDeEvolucionar , link.armas())
+	}
+	
+	test "Link tiene mucho poder al evolucionar" {
+		link.evolucionar()
+		assert.that(link.tieneMuchoPoder())
+	}
+	
+	test "Link no tiene mucho poder al inicio" {
+		assert.notThat(link.tieneMuchoPoder())
+	}
+}
