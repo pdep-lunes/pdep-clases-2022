@@ -1,0 +1,68 @@
+import arena.*
+import luchadores.*
+
+describe "Tests de arena" {
+	const luchadores = #{mario , link , sora}
+		
+	method cargarLuchadores() {
+		luchadores.forEach({luchador => arena.agregarLuchador(luchador)})
+	}
+	
+	method evolucionarLuchadores() {
+		luchadores.forEach({luchador => luchador.evolucionar()})
+	}
+	
+	//method initialize() {
+		//luchadores.forEach({luchador => arena.agregarLuchador(luchador)})		
+	//}
+	
+	test "La arena comienza vacia" {
+
+		assert.equals(0 , arena.cantidadDeLuchadores())
+
+	}
+	
+	test "La arena al agregar a link , mario , sora tiene 3 luchadores" {
+		self.cargarLuchadores()
+		assert.equals(3, arena.cantidadDeLuchadores())
+	}
+	
+	test "Al enviar el mensaje nombresDeLosLuchadores nos devuelve una lista con sus nombres" {
+		self.cargarLuchadores()
+		const nombreDeLuchadores = #{mario.nombre() , link.nombre()  , sora.nombre()}
+		assert.equals(nombreDeLuchadores , arena.nombresDeLosLuchadores().asSet())
+	}
+	
+	test "La arena cuando comienza no es amateur" {
+		assert.notThat(arena.esAmateur())
+	}
+	
+	test "La arena cuando le agregamos a link , mario y sora (sin evolucionar ninguno) es amateur" {
+		self.cargarLuchadores()
+		assert.that(arena.esAmateur())
+	}
+	
+	test "La arena le agregamos y evolucionamos a link , mario y sora no es amateur" {
+		self.cargarLuchadores()
+		self.evolucionarLuchadores()
+		assert.notThat(arena.esAmateur())
+	}
+	
+	test "Cuando le preguntamos a la arena los rivales de mario nos retorna a link y sora" {
+		self.cargarLuchadores()
+		const rivalesDeMario = #{link , sora}
+		assert.equals(rivalesDeMario , arena.rivales(mario))
+	}
+	
+	test "Cuando agregamos mario a su arena , aparecen sus luchadores" {
+		arena.agregarLuchador(mario)
+		assert.that(arena.luchadores().contains(mario))
+	}
+	
+	test "Al echar a los luchadores mario y link solo queda sora" {
+		self.cargarLuchadores()
+		arena.echarLuchador(mario)
+		arena.echarLuchador(link)
+		assert.equals(#{sora} , arena.luchadores())
+	}
+}
