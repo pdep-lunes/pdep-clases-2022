@@ -1,0 +1,62 @@
+@startuml
+class Estudiante {
+  notas
+  materiasCursadas
+
+  promedioDeNotas()
+  esEjemplar()
+  cantidadDeExamenesDesaprobados()
+  proximasMaterias()
+  agregarNota(unaNota)
+}
+
+class Oyente implements Cursante {
+  esEjemplar()
+  promedioDeNotas()
+  turnoNoche()
+}
+
+interface Cursante {
+  esEjemplar()
+  promedioDeNotas()
+}
+
+object docente {
+  cfd
+  estudiantes
+--
+  estudiantesEjemplares()
+  promedioDelCurso()
+  evaluarEstudiantes()
+  tomarExamen(unExamen)
+}
+
+object lucia {
+
+}
+
+object juan {
+
+}
+
+object perla {
+
+}
+
+object unOyente {
+
+}
+
+class Examen {
+
+}
+
+Cursante <|.. Estudiante : implementa
+Estudiante "*" <-left- docente : conoce / tiene
+
+Estudiante <|-- lucia : es
+Estudiante <|-- juan
+Estudiante <|-- perla
+Oyente <|-- unOyente
+Examen <.. docente : usa
+@enduml
