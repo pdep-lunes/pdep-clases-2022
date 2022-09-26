@@ -1,0 +1,52 @@
+@startuml
+abstract class Personaje {
+	energia
+	inventario
+	energiaDeLucha
+	gritoDeVictoria
+	{abstract} lucharContra(personaje) 
+	lucharContraEquipo(equipo) 
+	energia() 
+	tieneEnergia() 
+	gritoDeVictoria() 
+	perderEnergia(danio) 
+	cantidadDeElementos() 
+	ultimoElemento() 
+	perderUltimoElemento() 
+}
+
+class Sanador extends Personaje { 
+	lucharContra(personaje) 
+}
+
+class UltraSanador extends Sanador {	
+	lucharContraEquipo(equipo)
+}
+
+class Atacante extends Personaje {	
+	lucharContra(personaje) 
+}
+
+object toro {
+    --	
+	lucharContra(personaje) 		
+	ultimoElemento() 
+}
+
+object arena {
+	equipoRojo
+	equipoAzul
+	--
+	method combatir()
+	method pelearEntre(unEquipo, otroEquipo)	
+	method equipoGanador() 	
+	method energiaDeEquipo(unEquipo)	
+	method victoria()
+	method ganadoresConEnergia() 
+}
+Personaje <|-- toro 
+Personaje  "*" <-- arena
+@enduml
+
+
+
