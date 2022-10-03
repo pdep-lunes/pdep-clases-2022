@@ -1,0 +1,3 @@
+class ExceptionIrseDeAventuras inherits Exception {
+	
+}
