@@ -1,0 +1,39 @@
+@startuml
+class Rick {
+  demencia
+  acompaniante
+
+  irseDeAventuras()
+}
+
+interface Familiar {
+  puedeIrDeAventura()
+  irDeAventuraCon(unRick)
+}
+
+class Beth implements Familiar {
+  afectoPorRick
+
+  puedeIrDeAventura()
+  irDeAventuraCon(unRick)
+}
+
+class Morty implements Familiar {
+  saludMental
+
+  puedeIrDeAventura()
+  irDeAventuraCon(unRick)
+}
+
+class Summer extends Beth {
+  irDeAventuraCon(unRick)
+}
+
+object jerry {
+  puedeIrDeAventura()
+  irDeAventuraCon(unRick)
+}
+
+Familiar <|.. jerry
+Familiar <-l- Rick
+@enduml
